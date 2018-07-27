@@ -1,0 +1,36 @@
+
+  <h2>
+    My Heroes
+  </h2>
+
+  <!-- <u class="heroes">
+    < *ngFor: repeater for repeating data and elements -->
+    <!-- <li *ngFor = "let hero of heroes" 
+      [class.selected]="hero === selectedHero" 
+      (click)="onSelect(hero)">  -->
+      <!-->(click) event: implements the method called-->
+      <!-- <span class="badge"> {{hero.id}}</span>{{hero.name}} {{hero}} extrapolation; one way binding from the model to the view -->
+    <!-- </li>    
+  </u> --> 
+
+  <!-- Liberating the details view to make it stand alone-->
+  <!-- <app-herodetails [hero]="selectedHero"></app-herodetails> [hero] property binding, one way from the model to view, input property on the child component reading the parent property -->
+  <div>
+    <label>Hero Name:
+      <input #heroName />  <!--#heroName is an identifier-->
+    </label>
+    <!--click event passes the input value to the add method and clears the input-->
+    <button  (click)="add(heroName.value); heroName.value=''">
+      Add
+    </button>
+  </div>
+  <u class="heroes">
+      <!-- *ngFor: repeater for repeating data and elements -->
+      <li *ngFor = "let hero of heroes">
+        <a routerLink="/details/{{hero.id}}">        
+          <span class="badge"> {{hero.id}}</span>{{hero.name}} <!--{{hero}} extrapolation; one way binding from the model to the view-->
+        </a> 
+        <button class="delete" title="Delete Hero" 
+        (click)="delete(hero)">x</button>
+      </li>    
+    </u>
